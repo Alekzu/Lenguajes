@@ -1,0 +1,20 @@
+E : E '<->'E   {$$=(!$1 || $3) && (!$3 || $1)}
+  | E '->' E   {$$= !$1 || $3}
+  | E  'v' E   {$$= $1 || $3}
+  | E  '^' E   {$$= $1 && $3}
+  | '¬'E       {$$= !$2}
+  | '┴'        {$$= False}
+  | '┬'        {$$= True} 
+  |'('E')'     {$$=$2;}
+
+Bicondicional : Condicional '<->' Bicondicional | Condicional 			{$$=((!$1 || $3) && (!$3 || $1))| ((!$1 || $4) && (!$4 || $1))}
+Condicional   : Conjuncion '->' Condicional | Conjuuncion			{$$= (!$1 || $3)| (!$1 || $4)}
+Conjuncion    : Disyuncion 'v' Conjuncion | Disyuncion				{$$= ($1 || $3)|($1 || $4)}
+Disyuncion    : Literal '^' Disyuncion | Literal				{$$= ($1 && $3) || ($1 && $4)}
+Literal       : Atomo | '¬'Atomo						{$$= ($1)||(!$3)}
+Atomo         : '┴'|'┬' | Letra | Agrupacion					{$$= ($1)||($2)||($3)||($4)}
+Agrupacion    : '('Bicondicional')' | Bicondicional '+'| Bicondicional '?' 	
+Letra         : Letra 							        {$$=$1}
+
+
+cc lex.yy.c y.tab.c -o sd.out
