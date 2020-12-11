@@ -17,4 +17,41 @@ Agrupacion    : '('Bicondicional')' | Bicondicional '+'| Bicondicional '?'
 Letra         : Letra 							        {$$=$1}
 
 
+lex file.lex
+yacc -d file.y 
 cc lex.yy.c y.tab.c -o sd.out
+
+X = → = entonces
+F = ┴ = false
+T = ┬ = true
+W = ↔ = Bicondicional
+
+discord
+VV  ((1&1)&(1X~1))
+VF  ((1&0)&(1X~0))
+FV  ((0&1)&(0X~1))
+FF  ((0&0)&(0X~0))
+
+p q p r
+wiki ejemplo
+VVV   ~(1|1)X(1X1)
+VVF   ~(1|1)X(1X0)
+VFV   ~(1|0)X(1X1)
+VFF   ~(1|0)X(1X0)
+FVV   ~(0|1)X(0X1)
+FVF   ~(0|1)X(0X0)
+FFV   ~(0|0)X(0X1)
+FFF   ~(0|0)X(0X0)
+
+
+ejemplo 3
+((pxq)&(qxr))x(pxr)
+
+VVV   ((1X1)&(1X1))X(1X1)
+VVF   ((1X1)&(1X0))X(1X0)
+VFV   ((1X0)&(0X1))X(1X1)
+VFF   ((1X0)&(0X0))X(1X0)
+FVV   ((0X1)&(1X1))X(0X1)
+FVF   ((0X1)&(1X0))X(0X0)
+FFV   ((0X0)&(0X1))X(0X1)
+FFF   ((0X0)&(0X0))X(0X0)

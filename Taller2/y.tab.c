@@ -105,11 +105,13 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    PROPOSICION = 258
+    PROPOSITION = 258,
+    NUM = 259
   };
 #endif
 /* Tokens.  */
-#define PROPOSICION 258
+#define PROPOSITION 258
+#define NUM 259
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -127,7 +129,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 131 "y.tab.c" /* yacc.c:358  */
+#line 133 "y.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -367,23 +369,23 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  9
+#define YYFINAL  11
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   13
+#define YYLAST   27
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  9
+#define YYNTOKENS  14
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  3
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  11
+#define YYNRULES  12
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  15
+#define YYNSTATES  21
 
 /* YYTRANSLATE[YYX] -- Symbol number corresponding to YYX as returned
    by yylex, with out-of-bounds checking.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   258
+#define YYMAXUTOK   259
 
 #define YYTRANSLATE(YYX)                                                \
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -395,37 +397,37 @@ static const yytype_uint8 yytranslate[] =
        0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       7,     8,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     7,     2,
+       5,     6,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+      12,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,    13,     2,     2,    11,     8,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     9,     2,    10,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     6,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     5,     4,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     1,     2,     3
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     1,     2,     3,     4
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    17,    17,    24,    25,    26,    27,    28,    29,    30,
-      31,    32
+       0,    19,    19,    27,    28,    29,    30,    31,    32,    33,
+      34,    36,    37
 };
 #endif
 
@@ -434,8 +436,9 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "PROPOSICION", "'\\342'", "'\\341'",
-  "'\\302'", "'('", "')'", "$accept", "ArithmeticExpression", "E", YY_NULLPTR
+  "$end", "error", "$undefined", "PROPOSITION", "NUM", "'('", "')'",
+  "'&'", "'X'", "'|'", "'~'", "'W'", "'F'", "'T'", "$accept", "LogicProp",
+  "E", YY_NULLPTR
 };
 #endif
 
@@ -444,14 +447,15 @@ static const char *const yytname[] =
    (internal) symbol number NUM (which must be that of a token).  */
 static const yytype_uint16 yytoknum[] =
 {
-       0,   256,   257,   258,   226,   225,   194,    40,    41
+       0,   256,   257,   258,   259,    40,    41,    38,    88,   124,
+     126,    87,    70,    84
 };
 # endif
 
-#define YYPACT_NINF -4
+#define YYPACT_NINF -9
 
 #define yypact_value_is_default(Yystate) \
-  (!!((Yystate) == (-4)))
+  (!!((Yystate) == (-9)))
 
 #define YYTABLE_NINF -1
 
@@ -462,8 +466,9 @@ static const yytype_uint16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -1,    -4,    -4,    -1,    -1,     4,     7,     7,     5,    -4,
-      -1,    -1,    -4,     7,     7
+       3,    -9,    -9,     3,     3,    -9,    -9,     2,    16,    11,
+      -8,    -9,     3,     3,     3,     3,    -9,    -8,    -8,    -8,
+      16
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -471,20 +476,21 @@ static const yytype_int8 yypact[] =
      means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,    11,     8,     0,     0,     0,     2,     7,     0,     1,
-       0,     0,    10,     3,     5
+       0,    11,    12,     0,     0,     9,    10,     0,     2,     0,
+       8,     1,     0,     0,     0,     0,     3,     7,     5,     6,
+       4
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    -4,    -3
+      -9,    -9,    -3
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     5,     6
+      -1,     7,     8
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -492,36 +498,39 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_uint8 yytable[] =
 {
-       7,     8,     1,     2,     9,     3,     4,    13,    14,    10,
-      11,    10,    11,    12
+       9,    10,    11,    15,     0,     0,     1,     2,     3,    17,
+      18,    19,    20,     4,     0,     5,     6,    16,    12,    13,
+      14,     0,    15,    12,    13,    14,     0,    15
 };
 
-static const yytype_uint8 yycheck[] =
+static const yytype_int8 yycheck[] =
 {
-       3,     4,     3,     4,     0,     6,     7,    10,    11,     4,
-       5,     4,     5,     8
+       3,     4,     0,    11,    -1,    -1,     3,     4,     5,    12,
+      13,    14,    15,    10,    -1,    12,    13,     6,     7,     8,
+       9,    -1,    11,     7,     8,     9,    -1,    11
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     4,     6,     7,    10,    11,    11,    11,     0,
-       4,     5,     8,    11,    11
+       0,     3,     4,     5,    10,    12,    13,    15,    16,    16,
+      16,     0,     7,     8,     9,    11,     6,    16,    16,    16,
+      16
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,     9,    10,    11,    11,    11,    11,    11,    11,    11,
-      11,    11
+       0,    14,    15,    16,    16,    16,    16,    16,    16,    16,
+      16,    16,    16
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     1,     3,     3,     3,     3,     2,     1,     1,
-       3,     1
+       0,     2,     1,     3,     3,     3,     3,     3,     2,     1,
+       1,     1,     1
 };
 
 
@@ -1198,7 +1207,7 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 17 "logp.y" /* yacc.c:1646  */
+#line 19 "logp.y" /* yacc.c:1646  */
     { 
   
          printf("\nResult=%d\n", (yyval)); 
@@ -1206,65 +1215,71 @@ yyreduce:
          return 0; 
   
         }
-#line 1210 "y.tab.c" /* yacc.c:1646  */
+#line 1219 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 24 "logp.y" /* yacc.c:1646  */
-    {(yyval)=(!(yyvsp[-2]) || (yyvsp[0])) && (!(yyvsp[0]) || (yyvsp[-2]));}
-#line 1216 "y.tab.c" /* yacc.c:1646  */
+#line 27 "logp.y" /* yacc.c:1646  */
+    {(yyval)=(yyvsp[-1]);}
+#line 1225 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 25 "logp.y" /* yacc.c:1646  */
-    {(yyval)= !(yyvsp[-2]) || (yyvsp[0]);}
-#line 1222 "y.tab.c" /* yacc.c:1646  */
+#line 28 "logp.y" /* yacc.c:1646  */
+    {(yyval)=(!(yyvsp[-2]) || (yyvsp[0])) && (!(yyvsp[0]) || (yyvsp[-2]));}
+#line 1231 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 26 "logp.y" /* yacc.c:1646  */
-    {(yyval)= (yyvsp[-2]) || (yyvsp[0]);}
-#line 1228 "y.tab.c" /* yacc.c:1646  */
+#line 29 "logp.y" /* yacc.c:1646  */
+    {(yyval)= !(yyvsp[-2]) || (yyvsp[0]);}
+#line 1237 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 27 "logp.y" /* yacc.c:1646  */
-    {(yyval)= (yyvsp[-2]) && (yyvsp[0]);}
-#line 1234 "y.tab.c" /* yacc.c:1646  */
+#line 30 "logp.y" /* yacc.c:1646  */
+    {(yyval)= (yyvsp[-2]) || (yyvsp[0]);}
+#line 1243 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 28 "logp.y" /* yacc.c:1646  */
-    {(yyval)= !(yyvsp[0]);}
-#line 1240 "y.tab.c" /* yacc.c:1646  */
+#line 31 "logp.y" /* yacc.c:1646  */
+    {(yyval)= (yyvsp[-2]) && (yyvsp[0]);}
+#line 1249 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 29 "logp.y" /* yacc.c:1646  */
-    {(yyval)= 0;}
-#line 1246 "y.tab.c" /* yacc.c:1646  */
+#line 32 "logp.y" /* yacc.c:1646  */
+    {(yyval)= !(yyvsp[0]);}
+#line 1255 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 30 "logp.y" /* yacc.c:1646  */
-    {(yyval)= 1;}
-#line 1252 "y.tab.c" /* yacc.c:1646  */
+#line 33 "logp.y" /* yacc.c:1646  */
+    {(yyval)= 0;}
+#line 1261 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 31 "logp.y" /* yacc.c:1646  */
-    {(yyval)=(yyvsp[-1]);}
-#line 1258 "y.tab.c" /* yacc.c:1646  */
+#line 34 "logp.y" /* yacc.c:1646  */
+    {(yyval)= 1;}
+#line 1267 "y.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 32 "logp.y" /* yacc.c:1646  */
+#line 36 "logp.y" /* yacc.c:1646  */
     {(yyval)=(yyvsp[0]);}
-#line 1264 "y.tab.c" /* yacc.c:1646  */
+#line 1273 "y.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 12:
+#line 37 "logp.y" /* yacc.c:1646  */
+    {(yyval)=(yyvsp[0]);}
+#line 1279 "y.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1268 "y.tab.c" /* yacc.c:1646  */
+#line 1283 "y.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1492,21 +1507,21 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 36 "logp.y" /* yacc.c:1906  */
+#line 41 "logp.y" /* yacc.c:1906  */
  
   
 //driver code 
 void main() 
 { 
-   printf(" \nEnter Any Arithmetic Expression which can have operations Addition, Subtraction, Multiplication, Division,Modulus and Round Brackets:\n "); 
+   printf("\nEnter Logical proposition, propositions with 0/1 will be evaluated:\n"); 
   
    yyparse(); 
    if(flag==0) 
-   printf("\nEntered arithmetic expression is Valid\n\n"); 
+   printf("\nEntered logical proposition is Valid\n\n"); 
 } 
   
 void yyerror() 
 { 
-   printf("\nEntered arithmetic expression is Invalid\n\n"); 
+   printf("\nEntered logical proposition is Invalid\n\n"); 
    flag=1; 
 } 

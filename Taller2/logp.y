@@ -7,14 +7,16 @@
   void yyerror(); 
 %} 
   
-%token PROPOSICION
+%token PROPOSITION NUM
 
-
+%left '(' ')'
+%left '&' 'X' '|'
+%right '~'
   
 /* Rule Section */
 %% 
   
-ArithmeticExpression: E{ 
+LogicProp: E{ 
   
          printf("\nResult=%d\n", $$); 
   
@@ -22,15 +24,17 @@ ArithmeticExpression: E{
   
         }; 
 
-E : E'↔'E   {$$=(!$1 || $3) && (!$3 || $1);}
-  | E'→'E   {$$= !$1 || $3;}
-  | E'ᐯ'E   {$$= $1 || $3;}
-  | E'ᐱ'E   {$$= $1 && $3;}
-  | '¬'E       {$$= !$2;}
-  | '┴'        {$$= 0;}
-  | '┬'        {$$= 1;} 
-  |'('E')'     {$$=$2;}
-  | PROPOSICION {$$=$1;} 
+E :'('E')'     {$$=$2;}
+  | E'W'E   {$$=(!$1 || $3) && (!$3 || $1);}
+  | E'X'E   {$$= !$1 || $3;}
+  | E'|'E   {$$= $1 || $3;}
+  | E'&'E   {$$= $1 && $3;}
+  | '~'E       {$$= !$2;}
+  | 'F'        {$$= 0;}
+  | 'T'        {$$= 1;} 
+  
+  | PROPOSITION {$$=$1;} 
+  | NUM        {$$=$1;}
   
  ; 
   
@@ -39,15 +43,15 @@ E : E'↔'E   {$$=(!$1 || $3) && (!$3 || $1);}
 //driver code 
 void main() 
 { 
-   printf(" \nEnter Any Arithmetic Expression which can have operations Addition, Subtraction, Multiplication, Division,Modulus and Round Brackets:\n "); 
+   printf("\nEnter Logical proposition, propositions with 0/1 will be evaluated:\n"); 
   
    yyparse(); 
    if(flag==0) 
-   printf("\nEntered arithmetic expression is Valid\n\n"); 
+   printf("\nEntered logical proposition is Valid\n\n"); 
 } 
   
 void yyerror() 
 { 
-   printf("\nEntered arithmetic expression is Invalid\n\n"); 
+   printf("\nEntered logical proposition is Invalid\n\n"); 
    flag=1; 
 } 

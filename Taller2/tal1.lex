@@ -10,28 +10,24 @@ and main() ***/
   
 /*** Rule Section ***/
 %% 
-[a-z]{1} { 
-      yylval=atoi(yytext);
-      return PROPOSICION;
-      }
-[a-z]{2,} return 0;
-[\n\t ]	return 0;
-. return yytext[0];
-
+[a-z]{1}    { 
+                  yylval=atoi(yytext);
+                  return PROPOSITION;
+            }
+(0|1){1}          {yylval=atoi(yytext);return NUM;}
+(\&|~|W|X|F|T)    {return yytext[0];}
+\(|\)             {return yytext[0];}
+\|                {return yytext[0];}
+[a-z]{2,}         {return 0;}
+(0|1){2,}         {return 0;}
+[\n\t ]	      {return 0;}
+.                 {return 0;}
 
 
 %% 
   
 /*** Code Section p***/
-
-/* YET TO BE USED
- \;| { yylval=atoi(yytext); return SEMICOLON;}
-[a-zA-Z] {printf("%s Letra\n", yytext);}
-[a-zA-Z]+ {printf("%s Palabra\n", yytext);}
-*/
-//int yywrap(){} 
-//int main(){ 
-  
+ 
 // Explanation: 
 // yywrap() - wraps the above rule section 
 /* yyin - takes the file pointer  
@@ -39,9 +35,6 @@ and main() ***/
 /* yylex() - this is the main flex function 
           which runs the Rule Section*/
 // yytext is the text in the buffer 
-  
-// Uncomment the lines below  
-// to take input from file 
 
 int yywrap() 
 { 
